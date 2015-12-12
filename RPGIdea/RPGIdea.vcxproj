@@ -118,15 +118,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Cocaine.h" />
     <ClInclude Include="Item.h" />
+    <ClInclude Include="MapClass.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="RPGFunctions.h" />
     <ClInclude Include="UnitClass.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Cocaine.cpp" />
     <ClCompile Include="Concepts on grids.cpp" />
     <ClCompile Include="IdeasOnAttomics.cpp" />
     <ClCompile Include="Item.cpp" />
+    <ClCompile Include="MapClass.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="RPGFunctionsLibraries.cpp" />
     <ClCompile Include="UnitClass.cpp" />
