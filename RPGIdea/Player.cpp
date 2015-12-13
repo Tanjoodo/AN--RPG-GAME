@@ -17,14 +17,14 @@ Player::~Player()
 {
 }
 
-void Player::setItem(Item * newItem)
+/*void Player::setItem(Item * newItem)
 {
-	item = newItem;
-}
+	//item = newItem;
+}*/
 
 void Player::useItem()
 {
-	this->item->useBuff(*this);
+	//this->item->useBuff(*this);
 }
 
 void Player::setMovement(int x, int y)

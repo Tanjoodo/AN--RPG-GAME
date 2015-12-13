@@ -42,3 +42,8 @@ void Unit::setY(short y)
 {
 	this->y = y;
 }
+
+void Unit::setSymbol(char newSymbol)
+{
+	this->symbol = newSymbol;
+}

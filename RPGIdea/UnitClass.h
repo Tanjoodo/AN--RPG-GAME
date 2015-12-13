@@ -12,6 +12,7 @@ protected:
 	short x = NULL; // x
 	short y = NULL; // x
 	string name;
+	char symbol;
 
 public:
 	Unit(string,int,int); // Unit class optional
@@ -22,12 +23,15 @@ public:
 	short getAttackperturn() const { return attackperturn; };
 	short getX() const { return x; };
 	short getY() const { return y; };
+	char getSymbol() const { return symbol; };
+
 
 	void setName(string);
 	void setAttackperturn(short);
 	void setHealth(short);
 	void setX(short);
 	void setY(short);
+	void setSymbol(char newSymbol);
 
 //	virtual void attack() = 0; // don't know the use yet
 };
