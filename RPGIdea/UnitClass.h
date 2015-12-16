@@ -1,8 +1,9 @@
-#pragma once
 #ifndef UNIT_H
 #define UNIT_H
 #include <string>
 using namespace std;
+
+
 class Unit
 {
 protected:
@@ -23,18 +24,21 @@ public:
 	short getAttackperturn() const { return attackperturn; };
 	short getX() const { return x; };
 	short getY() const { return y; };
+	short getAttack() const { return attack; };
 	char getSymbol() const { return symbol; };
+	bool isDead();
 
+	virtual void operator>> (Unit &) = 0;
 
-	void setName(string);
-	void setAttackperturn(short);
-	void setHealth(short);
-	void setX(short);
-	void setY(short);
+	void setAttack(short newAttack);
+	void setName(string name);
+	void setAttackperturn(short newAttackPerTurn);
+	void setHealth(short hp);
+	void setX(short x);
+	void setY(short y);
 	void setSymbol(char newSymbol);
-
-//	virtual void attack() = 0; // don't know the use yet
+	
 };
 
-#endif // !1
+#endif
 

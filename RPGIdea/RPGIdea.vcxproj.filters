@@ -36,6 +36,24 @@
     <ClInclude Include="MapClass.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="RPGInterface.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Bat.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Crackhead.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Prostitute.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DrugLord.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="UnitClass.cpp">
@@ -63,6 +81,15 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="TestVer1.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Bat.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Crackhead.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

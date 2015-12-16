@@ -118,16 +118,25 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Bat.h" />
     <ClInclude Include="Cocaine.h" />
+    <ClInclude Include="Crackhead.h" />
+    <ClInclude Include="DrugLord.h" />
+    <ClInclude Include="Enemy.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="MapClass.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="Prostitute.h" />
     <ClInclude Include="RPGFunctions.h" />
+    <ClInclude Include="RPGInterface.h" />
     <ClInclude Include="UnitClass.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Bat.cpp" />
     <ClCompile Include="Cocaine.cpp" />
     <ClCompile Include="Concepts on grids.cpp" />
+    <ClCompile Include="Crackhead.cpp" />
+    <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="IdeasOnAttomics.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="MapClass.cpp" />

@@ -12,10 +12,23 @@ Unit::Unit()
 	this->name = "UNITNAME";
 	this->health = 50;
 	this->attack = 2;
+	this->attackperturn = 1;
 }
 
 Unit::~Unit()
+{      
+	          
+}         
+
+bool Unit::isDead()
 {
+	return (health <= 0) ? true : false;
+}
+
+
+void Unit::setAttack(short newAttack)
+{
+	this->attack = newAttack;
 }
 
 void Unit::setName(string newName)

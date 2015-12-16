@@ -11,6 +11,7 @@ Item::Item(string newName)
 
 Item::~Item()
 {
+
 }
 
 void Item::setName(string newName)

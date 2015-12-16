@@ -9,11 +9,12 @@ Please understandu lel
 class Cocaine : public Item
 {
 public:
+	Cocaine(string);
 	Cocaine();
 	~Cocaine();
-	virtual void setDescription(string); // gets the Enemy name and sets the deScriptionm
+	virtual void setDescription(); // gets the Enemy name and sets the deScriptionm
 	virtual string getDescription(); // get
-	virtual void useBuff(Player &);
+	virtual void useBuff(Unit &);
 	
 };
 #endif // !COCAINEITEM_H

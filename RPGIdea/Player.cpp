@@ -15,21 +15,30 @@ Player::Player()
 
 Player::~Player()
 {
+	delete item;
 }
 
-/*void Player::setItem(Item * newItem)
+void Player::setItem(Item * newItem)
 {
-	//item = newItem;
-}*/
+	item = newItem;
+}
+
+
 
 void Player::useItem()
 {
-	//this->item->useBuff(*this);
+	this->item->useBuff(*this);
 }
 
 void Player::setMovement(int x, int y)
 {
 	this->x = x;
 	this->y = y;
+}
+
+void Player::operator>>(Unit & enemy)
+{
+	// attacks player
+	enemy.setHealth(enemy.getHealth() - this->attack);
 }
 

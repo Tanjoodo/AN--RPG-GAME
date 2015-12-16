@@ -1,7 +1,6 @@
-#ifndef ITEM_H
-#define ITEM_H
+
+#include "UnitClass.h"
 #include <string>
-#include "Player.h"
 using namespace std;
 
 /*
@@ -13,10 +12,9 @@ three pure virtual functions that the other Item classes will utlize
 
 
 
-
 class Item
 {
-private:
+protected:
 	string name; // the name of the item
 	string description; // the name of the description
 
@@ -29,11 +27,10 @@ public:
 	string getName(); // get the name
 
 	// Virtual Functions that are used for the subclasses
-	virtual void setDescription(string) = 0;
+	virtual void setDescription() = 0;
 	virtual string getDescription() = 0;
 	virtual void useBuff(Unit &) = 0;
 };
 
 
 
-#endif // !1

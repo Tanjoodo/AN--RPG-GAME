@@ -1,24 +1,36 @@
 #include "Cocaine.h"
+using namespace std;
+
+Cocaine::Cocaine(string name)
+{
+	this->name = name;
+	this->setDescription();
+}
 
 Cocaine::Cocaine()
 {
+	name = "Shroom";
 }
 
 Cocaine::~Cocaine()
 {
 }
 
-void Cocaine::setDescription(string name)
+void Cocaine::setDescription()
 {
-
+	description.append("This item was used to help ");
+	description += this->name;
+	description.append(" with his.. certain.. issues");
 }
 
 string Cocaine::getDescription()
 {
-	return string();
+	return this->description;
 }
 
-void Cocaine::useBuff(Player & unit)
+void Cocaine::useBuff(Unit & unit)
 {
 	unit.setAttackperturn(unit.getAttackperturn() * 2);
 }
+
+
