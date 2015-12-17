@@ -9,7 +9,8 @@ three pure virtual functions that the other Item classes will utlize
 
 
 */
-
+#ifndef ITEM_H
+#define ITEM_H
 
 
 class Item
@@ -32,5 +33,5 @@ public:
 	virtual void useBuff(Unit &) = 0;
 };
 
-
+#endif //ITEM_H
 

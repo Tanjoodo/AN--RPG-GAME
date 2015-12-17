@@ -1,10 +1,10 @@
 #include "Cocaine.h"
 using namespace std;
 
-Cocaine::Cocaine(string name)
+Cocaine::Cocaine(string name) : Item(name)
 {
-	this->name = name;
 	this->setDescription();
+	this->name.append("'s cocopuffs");
 }
 
 Cocaine::Cocaine()
@@ -14,6 +14,7 @@ Cocaine::Cocaine()
 
 Cocaine::~Cocaine()
 {
+
 }
 
 void Cocaine::setDescription()

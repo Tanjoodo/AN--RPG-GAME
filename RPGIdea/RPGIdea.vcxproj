@@ -141,6 +141,7 @@
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="MapClass.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Prostitute.cpp" />
     <ClCompile Include="RPGFunctionsLibraries.cpp" />
     <ClCompile Include="TestVer1.cpp" />
     <ClCompile Include="UnitClass.cpp" />

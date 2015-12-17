@@ -17,12 +17,12 @@ Unit::Unit()
 
 Unit::~Unit()
 {      
-	          
+
 }         
 
 bool Unit::isDead()
 {
-	return (health <= 0) ? true : false;
+	return (health <= 0);
 }
 
 

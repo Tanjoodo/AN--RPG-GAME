@@ -16,7 +16,7 @@ protected:
 	char symbol;
 
 public:
-	Unit(string,int,int); // Unit class optional
+	Unit(string newName,int newHealth, int newAttack); // Unit class optional
 	Unit(); // string
 	~Unit(); //
 	short getHealth() const { return health; };

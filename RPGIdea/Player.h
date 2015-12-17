@@ -7,18 +7,19 @@ using namespace std;
 class Player : public Unit
 {
 protected:
-	Item * item = nullptr; // Items used for attacking
+	 // Items used for attacking
 	list<Item*> itemventory;
-
-
+	void useItem(int numberOfItem);
+	void displayItemList();
 public:
-	Player(string, int, int);
+	Player(string name, int health, int attack);
 	Player();
 	~Player();
 
 	void setItem(Item *);
-	void useItem();
 	void setMovement(int x, int y);
+	void getItem();
+
 
 	virtual void operator>> (Unit &);
 
