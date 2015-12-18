@@ -269,6 +269,15 @@ void Map::zoneChanger(Mapsnum cMap, bool zoneGoingUp, short tempY, short tempX)
 
 }
 
+void Map::gameOverScreen()
+{
+	system("cls");
+	cout << "\n\n\n\n\t\t\t YOU LOST \n\t\t\t and I won't even save for you LOL \n\n\n\n";
+	system("pause");
+
+	exit(-1);
+}
+
 
 
 char Map::getMovement()
@@ -296,6 +305,7 @@ char Map::getMovement()
 
 void Map::gameRun() 
 {
+	spawn();
 	mapZones = ENTRANCE; // sets the entrance
 	player->setMovement(8,18); // players are at the entrance
 	grid[mapZones][18][8] = player->getSymbol(); // sets the symbole
@@ -375,6 +385,122 @@ void Map::right()
 
 }
 
+void Map::battleMode(Player & player, Enemy & enemy)
+{
+	bool enemyTurn = true, playerTurn = true;
+	int choice = NULL;
+
+	short tempHP = player.getHealth();
+	short tempATP = player.getAttackperturn();
+
+	do
+	{
+		system("cls");
+		printGrid();
+		displayScore(player, enemy);
+		if (playerTurn && !player.isDead())
+		{
+			cout << "\nIt's player turn, what do you want to do?" << endl
+				<< "1. attack 2. item choices 3. skip " << endl
+				<< "choice: ";
+			cin >> choice; cin.ignore(80, '\n');
+			switch (choice)
+			{
+			case 1:
+			{
+				for (int i = 0; i < player.getAttackperturn(); i++)
+				{
+					player >> enemy;
+					cout << "\n" << player.getName() << " deals " << player.getAttack() << " to " << enemy.getName();
+					cin.get();
+				}
+				playerTurn = false;
+				enemyTurn = true;
+				break;
+			}
+			case 2:
+				player.getItem(); break;
+			case 3:
+				cout << player.getName() << " skipped the round" << endl;
+				cin.get();
+				playerTurn = false;
+				enemyTurn = true;
+			default:
+				break;
+			}
+		}
+
+		if (enemyTurn && !enemy.isDead())
+		{
+			for (int i = 0; i < enemy.getAttackperturn(); i++)
+			{
+				enemy >> player;
+				cout << enemy.getName() << " deals " << enemy.getAttack() << " to " << player.getName();
+				cin.get();
+			}
+			enemyTurn = false;
+			playerTurn = true;
+		}
+
+
+
+	} while (!player.isDead() && !enemy.isDead());
+
+
+	if (!player.isDead())
+	{
+		cout
+			<< player.getName() << " has won!" << endl
+			<< "you obtain " << enemy.dropItem()->getName() << "!" << endl
+			<< "Description " << enemy.dropItem()->getDescription() << endl;
+
+		player.setItem(enemy.dropItem());
+		player.setHealth(tempHP);
+		player.setAttackperturn(tempATP);
+	}
+
+	else if (!enemy.isDead()) {
+		gameOverScreen();
+	}
+	cin.get();
+	
+}
+
+void Map::displayScore(const Player & player, const Enemy & enemy)
+{
+	cout << "\t\t SCORES " << endl
+		<< player.getName() << "'s health is " << player.getHealth() << "\t\t" << enemy.getName() << "'s health is " << enemy.getHealth() << endl
+		<< player.getName() << "'s attack is " << player.getAttack() << "\t\t" << enemy.getName() << "'s attack is " << enemy.getAttack() << endl
+		<< player.getName() << "'s APT is " << player.getAttackperturn() << "   \t\t" << enemy.getName() << "'s ATP is " << enemy.getAttackperturn() << endl;
+}
+
+void Map::spawn()
+{
+	listOfEnemies.push_back(new CrackHead("Johnny", 300, 30, LIVING_ROOM));
+	listOfEnemies[0]->setX(7);
+	listOfEnemies[0]->setY(14);
+	grid[listOfEnemies[0]->getZone()][listOfEnemies[0]->getY()][listOfEnemies[0]->getX()] = listOfEnemies[0]->getSymbol();
+
+
+	listOfEnemies.push_back(new Prostitute("Johnathon", 500, 30, BATHROOM));
+	listOfEnemies[1]->setY(7);
+	listOfEnemies[1]->setX(7);
+
+	grid[listOfEnemies[1]->getZone()][listOfEnemies[1]->getY()][listOfEnemies[1]->getX()] = listOfEnemies[1]->getSymbol();
+}
+
+Enemy * Map::findEnemy(short tempY, short tempX)
+{
+	for (int i = 0; i < listOfEnemies.size(); i++)
+	{
+		if(!listOfEnemies[i]->isDead())
+			if (listOfEnemies[i]->getX() == tempX && listOfEnemies[i]->getY() == tempY && listOfEnemies[i]->getZone() == mapZones)
+			{
+				return listOfEnemies[i];
+			}
+	}
+}
+
 bool Map::checker(short tempY, short tempX)
 {
 	if (grid[mapZones][tempY][tempX] == '/')
@@ -393,12 +519,23 @@ bool Map::checker(short tempY, short tempX)
 		grid[mapZones][tempY][tempX] = player->getSymbol();
 		return false;
 	}
+	else if (isalpha(grid[mapZones][tempY][tempX]))
+	{
+		battleMode(*player, *findEnemy(tempY, tempX));
+		player->setMovement(tempX, tempY);
+		grid[mapZones][tempY][tempX] = player->getSymbol();
+		return false;
+	}
 	else
 	{
 		return true;
 	}
 
 }
+
+
+
+
 
 void Map::createGrids()
 {

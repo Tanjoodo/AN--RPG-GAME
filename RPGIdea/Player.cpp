@@ -31,13 +31,12 @@ void Player::useItem(int numberOfItem)
 {
 	list<Item*>::iterator it = itemventory.begin();
 	
-	if (numberOfItem != 0) {
-		for (int i = 0; i <= numberOfItem; i++)
-			it++;
-	}
+	
+	for (int i = 0; i < numberOfItem; i++)
+		it++;
+	
 
 	(*it)->useBuff(*this);
-
 	it = itemventory.erase(it); // then erase it from the node;
 }
 
@@ -57,7 +56,7 @@ void Player::getItem()
 		cout << "Choose the item you want to use: ";
 		cin >> choice; cin.ignore(80, '\n');
 
-		while ((choice-1) < 0 || (choice-1) > itemventory.size()) {
+		while ((choice-1) <= 0 && (choice-1) > itemventory.size()) {
 			cout << "\tWrong choice, try again: ";
 			cin >> choice; cin.ignore(80, '\n');
 		}

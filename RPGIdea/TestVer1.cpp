@@ -6,7 +6,7 @@
 using namespace std;
 
 
-#define TEST 3
+#define TEST 4
 
 #if TEST == 1
 int main() {
@@ -65,13 +65,14 @@ This test will test the RPG likes of ze program
 void displayScore(const Player &player, const Enemy &enemy);
 
 int main() {
-	Player player("John", 200, 100);
-	Prostitute mary("mary", 200, 40);
+	Player player("John", 500, 40);
+	Prostitute mary("mary", 500, 40, LIVING_ROOM);
 	bool enemyTurn = true, playerTurn = true;
 	int choice = NULL;
-	Cocaine bat("John");
+	Cocaine coco(player.getName());
+	Bat bat(player.getName());
 
-
+	player.setItem(&coco);
 	player.setItem(&bat);
 
 
@@ -149,6 +150,26 @@ void displayScore(const Player &player, const Enemy &enemy) {
 		<< player.getName() << "'s APT is " << player.getAttackperturn() << "   \t\t" << enemy.getName() << "'s ATP is " << enemy.getAttackperturn() << endl;
 }
 
+#elif TEST == 4
+/*
+FINAL TEST PROTOTYPE ALMOST DONE
+
+*/
+
+
+int main() {
+
+	Player player("Jack", 500, 40);
+	player.setSymbol('C');
+	Map test;
+	test.setPlayer(player);
+	test.gameRun();
+
+
+
+	cin.get();
+	return 0;
+}
 
 
 #endif

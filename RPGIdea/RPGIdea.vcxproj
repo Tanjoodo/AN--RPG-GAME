@@ -128,7 +128,6 @@
     <ClInclude Include="Player.h" />
     <ClInclude Include="Prostitute.h" />
     <ClInclude Include="RPGFunctions.h" />
-    <ClInclude Include="RPGInterface.h" />
     <ClInclude Include="UnitClass.h" />
   </ItemGroup>
   <ItemGroup>
@@ -136,6 +135,7 @@
     <ClCompile Include="Cocaine.cpp" />
     <ClCompile Include="Concepts on grids.cpp" />
     <ClCompile Include="Crackhead.cpp" />
+    <ClCompile Include="DrugLord.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="IdeasOnAttomics.cpp" />
     <ClCompile Include="Item.cpp" />

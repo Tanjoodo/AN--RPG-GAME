@@ -36,9 +36,6 @@
     <ClInclude Include="MapClass.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="RPGInterface.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Bat.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -93,6 +90,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Prostitute.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DrugLord.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
