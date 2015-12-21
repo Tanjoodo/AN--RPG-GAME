@@ -147,7 +147,7 @@
     <ClCompile Include="UnitClass.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="Questions.txt" />
+    <Text Include="Maps and Ideas.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

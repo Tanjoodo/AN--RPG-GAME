@@ -4,6 +4,16 @@
   É æ Æ ô ö ò û ù ÿ Ö Ü ¢ £ ¥ ? ƒ á í ó ú ñ Ñ ª º ¿ ? ¬ ½ ¼ ¡ « » ? ? ? ? ? ? ? ?
   ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? 
   ß ? ? ? ? µ ? ? ? ? ? ? ? ? ? ? ± ? ? ? ? ÷ ? ° ? · ? ? ² ?  
+
+
+
+This Txt shows you all the maps and the coordiantes
+I used this when helping err.. hardcoding
+
+You might be asking "How'd  you hard code all the zones?"
+well I used to fileFilter project and did some changes where each character will have a ' ', on them making it way more easier
+
+
              01234567890
    012345678911111111112                   
 0 '?????????????????????'
@@ -147,13 +157,7 @@
 
 
  A RPG GAME
-                  ____     ___      ______                    ___________   ______
-       /\        |    \   |   \    / _____|        /\        |          |  | _____|
-      /  \       |    /   |    |  | |             /  \       | |\    /| |  | |                                
-     /    \      |   /    |___/   | |   __       /    \      | | \  / | |  | |____                          
-    /      \     |---     |       | |  |__|     /      \     | |  \/  | |  |  ____|
-   /--------\    |   \    |       | |_____|    /--------\    | |      | |  | |____
-  /          \   |    \   |        \______|   /          \   |_|      |_|  |______|                              
+                      
                                              
 Unit CLASS
 

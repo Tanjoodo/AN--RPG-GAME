@@ -97,7 +97,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="Questions.txt">
+    <Text Include="Maps and Ideas.txt">
       <Filter>Source Files\Examples on the code</Filter>
     </Text>
   </ItemGroup>
