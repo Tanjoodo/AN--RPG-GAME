@@ -19,6 +19,8 @@ public:
 	Unit(string newName,int newHealth, int newAttack); // Unit class optional
 	Unit(); // string
 	~Unit(); //
+
+	// THE GETTERS
 	short getHealth() const { return health; };
 	string getName() const { return name; };
 	short getAttackperturn() const { return attackperturn; };
@@ -28,8 +30,10 @@ public:
 	char getSymbol() const { return symbol; };
 	bool isDead();
 
-	virtual void operator>> (Unit &) = 0;
+	virtual void operator>> (Unit &) = 0; // this is what makes in abstract... uh 
 
+
+	// THE SETTERS
 	void setAttack(short newAttack);
 	void setName(string name);
 	void setAttackperturn(short newAttackPerTurn);

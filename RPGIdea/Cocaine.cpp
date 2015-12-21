@@ -4,12 +4,7 @@ using namespace std;
 Cocaine::Cocaine(string name) : Item(name)
 {
 	this->setDescription();
-	this->name.append("'s cocopuffs");
-}
-
-Cocaine::Cocaine()
-{
-	name = "Shroom";
+	this->name.append("'s benzoylmethylecgonine");
 }
 
 Cocaine::~Cocaine()

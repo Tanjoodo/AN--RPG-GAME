@@ -23,7 +23,8 @@ private:
 	char grid[6][20][21]; // the map 6 zones with all the size of 20x21
 	Player * player = NULL; // this will be assigned to the player
 	Mapsnum mapZones = ENTRANCE; // this is used to help with the grid
-	vector<Enemy*> listOfEnemies;
+	vector<Enemy*> listOfEnemies; // the List of enemies
+	vector<Item*> listOfItems; // the list of the Items
 
 	void createGrids(); // creates the grids for the maps
 	char getMovement(); // this it used to get movements from the WINAPI.. also this is where the looping of the game will mostly happen
@@ -33,7 +34,12 @@ private:
 	void right(); // movement from the player
 	void battleMode(Player & player, Enemy & enemy); // the Battle version of the code
 	void displayScore(const Player &player, const Enemy &enemy); // displays the score for the battleMode
-	void spawn(); // spawns the enemy
+	void spawn(); // spawns all the enemies on the grid
+	void spawnItems(); // spawns all the items on the grid
+	void setEnemyOnGrid(int index); // this sets the enemy's symbol on the grid
+	void printPrepareBattleScreen(const Player &player, const Enemy &enemy); // the Battle preperare screen thiny
+
+	Item * findItem(short tempY, short tempX); // finds the item on the listOfitems and gives it to the user
 	Enemy * findEnemy(short tempY, short tempX); // finds the enemy and then prepares for battle
 
 	bool checker(short tempY, short tempX); // this is a function used to check various parts of the map
@@ -44,10 +50,7 @@ public:
 	void gameRun(); // makes the game run
 	void printGrid(); // prints the grid
 	void zoneChanger(Mapsnum mapZones, bool zoneGoingUp, short tempY, short tempX); // THE INFAMOUS ZONE CHANGER
-	void gameOverScreen();
-
-
-
+	void gameOverScreen(); // YOU LOST
 };
 
 #endif

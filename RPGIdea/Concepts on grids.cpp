@@ -6,6 +6,10 @@
 
 using namespace std;
 
+CONCEPTS I USED WHEN I WAS CREATING THE GRID
+
+
+
 //declare array for game board and fill it
 char gameBoard[20][20] =
 { { '-' , '-' , '-' , '-' , '-' , '-' , '-' , '-' , '-' , '-' , '-', '-' , '-' , '-' , '-' , '-' , '-' , '-' , '-' , '-' }

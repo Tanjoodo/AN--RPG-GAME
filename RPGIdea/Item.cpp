@@ -2,6 +2,7 @@
 
 Item::Item()
 {
+	// has no meaning
 }
 
 Item::Item(string newName)
@@ -11,7 +12,7 @@ Item::Item(string newName)
 
 Item::~Item()
 {
-
+	// has no meaning
 }
 
 void Item::setName(string newName)
@@ -19,8 +20,20 @@ void Item::setName(string newName)
 	this->name = newName;
 }
 
-string Item::getName()
+void Item::setZone(map_grids::Mapsnum newZone)
 {
-	return name;
+	this->itemZone = newZone;
 }
+
+void Item::setX(short newX)
+{
+	x = newX;
+}
+
+void Item::setY(short newY)
+{
+	y = newY;
+}
+
+
 

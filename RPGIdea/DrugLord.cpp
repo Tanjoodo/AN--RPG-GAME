@@ -3,20 +3,18 @@
 
 
 
-DrugLord::DrugLord(string newName, int newHealth, int newAttack,  map_grids::Mapsnum zone)
+DrugLord::DrugLord(string newName, int newHealth, int newAttack)
 {
 	this->name = newName;
 	this->health = newHealth;
 	this->attack = newAttack;
-	this->enemyZone = zone;
-	this->attack = 3;
+	this->attack = 60;
+	this->attackperturn = 3;
 	this->symbol = newName[0];
+	this->role += "DrugLord";
 }
 
-DrugLord::DrugLord(string Name)
-{
-	//enemyItem = new Cocaine(this->getName());
-}
+
 
 DrugLord::~DrugLord()
 {

@@ -168,6 +168,7 @@ void Map::printGrid()
 {
 	for (int i = 0; i<20; i++)
 	{
+		wcout << "\t\t\t\t\t";
 		for (int j = 0; j<21; j++)
 		{
 			wcout << grid[mapZones][i][j];
@@ -307,6 +308,7 @@ void Map::gameRun()
 {
 	spawn();
 	mapZones = ENTRANCE; // sets the entrance
+	spawnItems();
 	player->setMovement(8,18); // players are at the entrance
 	grid[mapZones][18][8] = player->getSymbol(); // sets the symbole
 	do {
@@ -387,16 +389,18 @@ void Map::right()
 
 void Map::battleMode(Player & player, Enemy & enemy)
 {
+	printPrepareBattleScreen(player, enemy);
 	bool enemyTurn = true, playerTurn = true;
 	int choice = NULL;
 
 	short tempHP = player.getHealth();
 	short tempATP = player.getAttackperturn();
+	short tempAttack = player.getAttack();
+
 
 	do
 	{
 		system("cls");
-		printGrid();
 		displayScore(player, enemy);
 		if (playerTurn && !player.isDead())
 		{
@@ -407,19 +411,19 @@ void Map::battleMode(Player & player, Enemy & enemy)
 			switch (choice)
 			{
 			case 1:
-			{
 				for (int i = 0; i < player.getAttackperturn(); i++)
 				{
 					player >> enemy;
-					cout << "\n" << player.getName() << " deals " << player.getAttack() << " to " << enemy.getName();
+					cout << player.getName() << " deals " << player.getAttack() << " to " << enemy.getName();
 					cin.get();
 				}
 				playerTurn = false;
 				enemyTurn = true;
 				break;
-			}
+			
 			case 2:
-				player.getItem(); break;
+				player.getItem(); 
+				enemyTurn = false; break;
 			case 3:
 				cout << player.getName() << " skipped the round" << endl;
 				cin.get();
@@ -457,6 +461,7 @@ void Map::battleMode(Player & player, Enemy & enemy)
 		player.setItem(enemy.dropItem());
 		player.setHealth(tempHP);
 		player.setAttackperturn(tempATP);
+		player.setAttack(tempAttack);
 	}
 
 	else if (!enemy.isDead()) {
@@ -474,30 +479,77 @@ void Map::displayScore(const Player & player, const Enemy & enemy)
 		<< player.getName() << "'s APT is " << player.getAttackperturn() << "   \t\t" << enemy.getName() << "'s ATP is " << enemy.getAttackperturn() << endl;
 }
 
+
+/*
+ Th
+
+*/
+
+//
+
 void Map::spawn()
 {
-	listOfEnemies.push_back(new CrackHead("Johnny", 300, 30, LIVING_ROOM));
-	listOfEnemies[0]->setX(7);
-	listOfEnemies[0]->setY(14);
-	grid[listOfEnemies[0]->getZone()][listOfEnemies[0]->getY()][listOfEnemies[0]->getX()] = listOfEnemies[0]->getSymbol();
+	listOfEnemies.push_back(new DrugLord("Tony", 1000, 37));
+	listOfEnemies[0]->setArea(RIGHTROOM,9,16);
+	setEnemyOnGrid(0);
+
+	listOfEnemies.push_back(new CrackHead("Johnny", 300, 30));
+	listOfEnemies[1]->setArea(LIVING_ROOM, 14, 7);
+	setEnemyOnGrid(1);
+
+	listOfEnemies.push_back(new Prostitute("Johnathon", 500, 30));
+	listOfEnemies[2]->setArea(BATHROOM, 7, 7);
+	setEnemyOnGrid(2);
 
 
-	listOfEnemies.push_back(new Prostitute("Johnathon", 500, 30, BATHROOM));
-	listOfEnemies[1]->setY(7);
-	listOfEnemies[1]->setX(7);
+}
 
-	grid[listOfEnemies[1]->getZone()][listOfEnemies[1]->getY()][listOfEnemies[1]->getX()] = listOfEnemies[1]->getSymbol();
+void Map::spawnItems()
+{
+	listOfItems.push_back(new Cocaine("Randy"));
+	listOfItems.push_back(new Bat("Randy"));
+
+	listOfItems[0]->setX(18);
+	listOfItems[0]->setY(3);
+	listOfItems[0]->setZone(ENTRANCE);
+
+	listOfItems[1]->setX(17);
+	listOfItems[1]->setY(3);
+	listOfItems[1]->setZone(ENTRANCE);
+}
+
+void Map::setEnemyOnGrid(int i)
+{
+	grid[listOfEnemies[i]->getZone()][listOfEnemies[i]->getY()][listOfEnemies[i]->getX()] = listOfEnemies[i]->getSymbol();
+}
+
+void Map::printPrepareBattleScreen(const Player & player, const Enemy & enemy)
+{
+	
+	system("cls");
+	cout << "\n\n\n\n\n"
+		<< "\t\t\t\t  " << player.getSymbol() << "\t\t\t" << enemy.getSymbol() << endl
+		<< "\t\t\t\t" << player.getName() << "     VS.     " << enemy.getName() << " the " << enemy.getRole();
+	cin.get();
+}
+
+Item * Map::findItem(short tempY, short tempX)
+{
+	for (size_t i = 0; i < listOfEnemies.size(); i++)
+	{
+		if (listOfItems[i]->getX() == tempX && listOfItems[i]->getY() == tempY && listOfItems[i]->getZone() == mapZones)
+			return listOfItems[i];
+	}
+	return nullptr;
 }
 
 Enemy * Map::findEnemy(short tempY, short tempX)
 {
-	for (int i = 0; i < listOfEnemies.size(); i++)
+	for (size_t i = 0; i < listOfEnemies.size(); i++)
 	{
 		if(!listOfEnemies[i]->isDead())
 			if (listOfEnemies[i]->getX() == tempX && listOfEnemies[i]->getY() == tempY && listOfEnemies[i]->getZone() == mapZones)
-			{
 				return listOfEnemies[i];
-			}
 	}
 }
 
@@ -526,16 +578,24 @@ bool Map::checker(short tempY, short tempX)
 		grid[mapZones][tempY][tempX] = player->getSymbol();
 		return false;
 	}
+	else if(grid[mapZones][tempY][tempX] == '@')
+	{
+		Item * foundItem = findItem(tempY, tempX);
+		cout << "\nYou found an item!" << endl
+			<< "It's " << foundItem->getName() << "!" << endl
+			<< "Description: " << foundItem->getDescription();
+		cin.get();
+		player->setItem(foundItem);
+		player->setMovement(tempX, tempY);
+		grid[mapZones][tempY][tempX] = player->getSymbol();
+		return false;
+	}
 	else
 	{
 		return true;
 	}
 
 }
-
-
-
-
 
 void Map::createGrids()
 {

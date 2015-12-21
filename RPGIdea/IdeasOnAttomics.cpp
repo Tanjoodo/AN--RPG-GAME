@@ -1,4 +1,5 @@
-// this_thread::yield example
+// THREADING IDEAS THAT I ENDED UP NOT DOING
+
 /*nclude <iostream>       // std::cout
 #include <thread>         // std::thread, std::this_thread::yield
 #include <atomic>         // std::atomic

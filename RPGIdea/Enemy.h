@@ -13,20 +13,19 @@
 *
 */
 
-
-
 class Enemy : public Unit
 {
 protected:
 	Item * enemyItem; // items that will die
-	map_grids::Mapsnum enemyZone;
-
-	 // drops item when he dies
+	map_grids::Mapsnum enemyZone; // used for the findEnemy() on the main class helps find the enemy's coordinates
+	string role; // the role of the enemy
 
 public:
 	Enemy(); 
 	Item * dropItem();
-	map_grids::Mapsnum  getZone() const { return enemyZone; };
+	void setArea(map_grids::Mapsnum newZone, short tempY, short tempX); // used to set the area for the enemy class
+	map_grids::Mapsnum  getZone() const { return enemyZone; }; // used to get the zones from the enemy class
+	string getRole() const { return role; }; // gets the roles
 
 
 	// deletes Item pointer

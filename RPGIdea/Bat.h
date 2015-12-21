@@ -17,8 +17,8 @@ public:
 	Bat();
 	~Bat();
 	virtual void setDescription(); // gets the Enemy name and sets the deScriptionm
-	virtual string getDescription(); // get
-	virtual void useBuff(Unit &);
+	virtual string getDescription(); // get description with the reason of the bat
+	virtual void useBuff(Unit &); // applys +20 damage;
 
 };
 #endif // !1

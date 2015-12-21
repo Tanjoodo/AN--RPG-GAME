@@ -2,12 +2,12 @@
 
 Unit::Unit(std::string newName, int newHealth, int newAttack)
 {
-	this->name = newName;
+	this->name = newName; 
 	this->health = newHealth;
 	this->attack = newAttack;
 }
 
-Unit::Unit()
+Unit::Unit() // a default constructored I used for naming and etc
 {
 	this->name = "UNITNAME";
 	this->health = 50;
@@ -15,12 +15,12 @@ Unit::Unit()
 	this->attackperturn = 1;
 }
 
-Unit::~Unit()
+Unit::~Unit() // a deconstructored
 {      
 
 }         
 
-bool Unit::isDead()
+bool Unit::isDead() // if health is 0 or less then it returns a false
 {
 	return (health <= 0);
 }
@@ -28,7 +28,7 @@ bool Unit::isDead()
 
 void Unit::setAttack(short newAttack)
 {
-	this->attack = newAttack;
+	this->attack = newAttack; 
 }
 
 void Unit::setName(string newName)
